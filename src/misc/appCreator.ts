@@ -13,7 +13,7 @@ export class AppCreator {
         this.createAppJson();
         this.createMainTypeScriptFile();
         this.createBlankIcon();
-        this.createdReadme();
+        this.createReadme();
         this.createTsConfig();
         this.createTsLintConfig();
         this.createPackageJson();
@@ -54,7 +54,7 @@ export class ${ pascalCase(this.fd.info.name) }App extends App {
     }
 
     // tslint:disable:max-line-length
-    private createdReadme(): void {
+    private createReadme(): void {
         const toWrite =
 `# ${ this.fd.info.name }
 ${ this.fd.info.description }
@@ -80,7 +80,7 @@ Here are some links to examples and documentation:
 - [#rocketchat-apps on Open.Rocket.Chat](https://open.rocket.chat/channel/rocketchat-apps)
 `;
 
-        fs.writeFileSync('README.md', toWrite, 'utf8');
+        fs.writeFileSync(this.fd.mergeWithFolder('README.md'), toWrite, 'utf8');
     }
 
     private createTsConfig(): void {
